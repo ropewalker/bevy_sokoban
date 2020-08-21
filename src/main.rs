@@ -13,8 +13,6 @@ use bevy::render::pass::ClearColor;
 
 fn main() {
     App::build()
-        .add_default_plugins()
-        .add_plugin(FrameTimeDiagnosticsPlugin::default())
         .add_event::<GameEvent>()
         .add_resource(WindowDescriptor {
             title: "Bevy Sokoban!".to_string(),
@@ -29,6 +27,8 @@ fn main() {
         .init_resource::<Map>()
         .init_resource::<TileSize>()
         .init_resource::<Gameplay>()
+        .add_default_plugins()
+        .add_plugin(FrameTimeDiagnosticsPlugin::default())
         .add_startup_system(setup.system())
         .add_system_to_stage(stage::EVENT_UPDATE, print_keyboard_event.system())
         .add_system_to_stage(stage::EVENT_UPDATE, input_system.system())
