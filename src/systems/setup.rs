@@ -16,8 +16,8 @@ pub fn setup(
     mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     commands
-        .spawn(Camera2dComponents::default())
-        .spawn(UiCameraComponents::default());
+        .spawn(UiCameraComponents::default())
+        .spawn(Camera2dComponents::default());
 
     create_labels(&mut commands, &gameplay, &asset_server);
 
