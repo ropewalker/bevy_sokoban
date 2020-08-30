@@ -23,7 +23,7 @@ pub fn event_listener_system(
             GameEvent::EntityMoved(id) => {
                 let entity = Entity::from_id(id.0);
 
-                if let Ok(the_box) = dbg!(box_query.get::<Box>(entity)) {
+                if let Ok(the_box) = box_query.get::<Box>(entity) {
                     let box_spots_with_positions = box_spot_query
                         .iter()
                         .iter()
