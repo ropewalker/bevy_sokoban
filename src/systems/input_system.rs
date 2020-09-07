@@ -62,10 +62,12 @@ pub fn input_system(
 
                 if let Some(id) = mov.get(&pos) {
                     to_move.insert(*id, direction);
-                } else if immov.contains_key(&pos) {
-                    to_move.clear();
-                    events.send(GameEvent::PlayerHitObstacle);
                 } else {
+                    if immov.contains_key(&pos) {
+                        to_move.clear();
+                        events.send(GameEvent::PlayerHitObstacle);
+                    }
+
                     break;
                 }
             }
