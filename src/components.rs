@@ -61,9 +61,7 @@ pub enum MoveDirection {
     Right,
 }
 
-pub struct Movable {
-    pub direction: Option<MoveDirection>,
-}
+pub struct Movable;
 
 pub struct Immovable;
 

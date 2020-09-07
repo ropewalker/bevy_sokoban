@@ -44,7 +44,7 @@ pub fn create_boxes(
                 .with(Timer::from_seconds(0.25))
                 .with(position)
                 .with(Box { colour })
-                .with(Movable { direction: None });
+                .with(Movable);
         }
     }
 }

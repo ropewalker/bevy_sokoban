@@ -43,6 +43,6 @@ pub fn create_players(
             .with(Timer::from_seconds(0.25))
             .with(position)
             .with(Player)
-            .with(Movable { direction: None });
+            .with(Movable);
     }
 }

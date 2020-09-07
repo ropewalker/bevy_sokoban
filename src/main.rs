@@ -32,7 +32,6 @@ fn main() {
         .add_startup_system(setup.system())
         .add_system_to_stage(stage::EVENT_UPDATE, print_keyboard_event.system())
         .add_system_to_stage(stage::EVENT_UPDATE, input_system.system())
-        .add_system_to_stage(stage::PRE_UPDATE, movement_system.system())
         .add_system_to_stage(stage::UPDATE, translation_system.system())
         .add_system_to_stage(stage::UPDATE, animate_sprite_system.system())
         .add_system_to_stage(stage::UPDATE, label_update_system.system())
