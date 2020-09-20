@@ -6,4 +6,3 @@ edition = "2018"
 
 [dependencies]
 bevy = "0.2.0"
-async-executor = "=1.2.0"

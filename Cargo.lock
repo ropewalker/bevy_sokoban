@@ -493,7 +493,6 @@ dependencies = [
 name = "bevy_sokoban"
 version = "0.1.0"
 dependencies = [
- "async-executor",
  "bevy",
 ]
 
