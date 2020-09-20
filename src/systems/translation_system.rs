@@ -5,8 +5,8 @@ use bevy::prelude::*;
 pub fn translation_system(
     map: Res<Map>,
     tile_size: Res<TileSize>,
-    mut translation: Mut<Translation>,
+    mut transform: Mut<Transform>,
     position: &Position,
 ) {
-    *translation = position_to_translation(&map, &tile_size, position, translation.0.z());
+    *transform = position_to_translation(&map, &tile_size, position, transform.translation().z());
 }

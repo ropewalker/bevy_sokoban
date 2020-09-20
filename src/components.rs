@@ -1,5 +1,5 @@
 use crate::resources::*;
-use bevy::prelude::{Res, Translation, Vec3};
+use bevy::prelude::{Res, Transform, Vec3};
 use std::fmt;
 use std::fmt::Display;
 
@@ -14,8 +14,8 @@ pub fn position_to_translation(
     tile_size: &Res<TileSize>,
     position: &Position,
     z: f32,
-) -> Translation {
-    Translation(Vec3::new(
+) -> Transform {
+    Transform::from_translation(Vec3::new(
         (position.x as f32 - (map.width - 1) as f32 / 2.0) * tile_size.0,
         (-(position.y as f32) + (map.height - 1) as f32 / 2.0) * tile_size.0,
         z,

@@ -33,15 +33,15 @@ pub fn create_boxes(
         let texture_atlas = texture_atlases.add(texture_atlas);
 
         for position in positions {
-            let translation = position_to_translation(map, tile_size, &position, 10.0);
+            let transform = position_to_translation(map, tile_size, &position, 10.0);
 
             commands
                 .spawn(SpriteSheetComponents {
                     texture_atlas,
-                    translation,
+                    transform,
                     ..Default::default()
                 })
-                .with(Timer::from_seconds(0.25))
+                .with(Timer::from_seconds(0.25, true))
                 .with(position)
                 .with(Box { colour })
                 .with(Movable);

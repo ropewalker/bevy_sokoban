@@ -21,7 +21,7 @@ pub fn event_listener_system(
                 audio_output.play(sound);
             }
             GameEvent::EntityMoved(id) => {
-                let entity = Entity::from_id(id.0);
+                let entity = Entity::new(id.0);
 
                 if let Ok(the_box) = box_query.get::<Box>(entity) {
                     let box_spots_with_positions = box_spot_query

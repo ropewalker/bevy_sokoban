@@ -13,12 +13,12 @@ pub fn create_floors(
     let material = materials.add(asset_server.load("assets/images/floor.png").unwrap().into());
 
     for position in positions {
-        let translation = position_to_translation(map, tile_size, &position, 5.0);
+        let transform = position_to_translation(map, tile_size, &position, 5.0);
 
         commands
             .spawn(SpriteComponents {
                 material,
-                translation,
+                transform,
                 ..Default::default()
             })
             .with(position);

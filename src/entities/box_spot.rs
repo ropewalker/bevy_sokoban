@@ -20,12 +20,12 @@ pub fn create_box_spots(
         );
 
         for position in positions {
-            let translation = position_to_translation(map, tile_size, &position, 9.0);
+            let transform = position_to_translation(map, tile_size, &position, 9.0);
 
             commands
                 .spawn(SpriteComponents {
                     material,
-                    translation,
+                    transform,
                     ..Default::default()
                 })
                 .with(position)
