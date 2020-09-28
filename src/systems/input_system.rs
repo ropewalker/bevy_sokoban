@@ -5,7 +5,7 @@ use bevy::prelude::*;
 use std::collections::{HashMap, HashSet};
 
 pub fn input_system(
-    keyboard_input: Res<Input<KeyCode>>,
+    keyboard_input: ChangedRes<Input<KeyCode>>,
     map: Res<Map>,
     mut gameplay: ResMut<Gameplay>,
     mut events: ResMut<Events<GameEvent>>,

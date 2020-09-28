@@ -6,7 +6,8 @@ pub fn translation_system(
     map: Res<Map>,
     tile_size: Res<TileSize>,
     mut transform: Mut<Transform>,
-    position: &Position,
+    position: Changed<Position>,
 ) {
-    *transform = position_to_translation(&map, &tile_size, position, transform.translation().z());
+    *transform =
+        position_to_translation(&map, &tile_size, &(*position), transform.translation().z());
 }
