@@ -23,7 +23,7 @@ pub fn event_listener_system(
             GameEvent::EntityMoved(id) => {
                 let entity = Entity::new(id.0);
 
-                if let Ok(the_box) = box_query.get::<Box>(entity) {
+                if let Ok(r#box) = box_query.get::<Box>(entity) {
                     let box_spots_with_positions = box_spot_query
                         .iter()
                         .iter()
@@ -35,7 +35,7 @@ pub fn event_listener_system(
                         // is if it's the correct or incorrect type
                         if let Some(box_spot) = box_spots_with_positions.get(&box_position) {
                             new_events.push(GameEvent::BoxPlacedOnSpot(IsCorrectSpot(
-                                box_spot.colour == the_box.colour,
+                                box_spot.colour == r#box.colour,
                             )));
                         }
                     }
