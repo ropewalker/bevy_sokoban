@@ -6,7 +6,7 @@ use std::collections::HashMap;
 pub fn gameplay_state_system(
     mut gameplay: ResMut<Gameplay>,
     mut box_spot_query: Query<(&BoxSpot, &Position)>,
-    mut box_query: Query<(&Box, Changed<Position>)>,
+    mut box_query: Query<(&Box, &Position)>,
 ) {
     let occupied_positions_with_colors = box_query
         .iter()
