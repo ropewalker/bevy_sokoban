@@ -13,6 +13,10 @@ pub fn input_system(
     mut movables_query: Query<Without<Player, (Entity, &Movable, &mut Position)>>,
     mut immovables_query: Query<(Entity, &Immovable, &Position)>,
 ) {
+    if gameplay.state != GameplayState::Playing {
+        return;
+    }
+
     let direction = if keyboard_input.just_pressed(KeyCode::Up) {
         Some(MoveDirection::Up)
     } else if keyboard_input.just_pressed(KeyCode::Down) {
