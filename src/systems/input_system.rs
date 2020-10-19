@@ -71,7 +71,7 @@ pub fn input_system(
                     events.send(GameEvent::PlayerHitObstacle);
                     break;
                 } else {
-                    do_move(&entity, &mut position, &direction, &mut events);
+                    r#move(&entity, &mut position, &direction, &mut events);
                     gameplay.moves_count += 1;
 
                     break;
@@ -81,13 +81,13 @@ pub fn input_system(
 
         for (entity, _movable, mut position) in &mut movables_query.iter() {
             if to_move.remove(&entity.id()) {
-                do_move(&entity, &mut position, &direction, &mut events);
+                r#move(&entity, &mut position, &direction, &mut events);
             }
         }
     }
 }
 
-fn do_move(
+fn r#move(
     entity: &Entity,
     position: &mut Mut<Position>,
     direction: &MoveDirection,
