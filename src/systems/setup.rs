@@ -8,7 +8,6 @@ use std::collections::HashMap;
 pub fn setup(
     mut commands: Commands,
     map: Res<Map>,
-    gameplay: Res<Gameplay>,
     tile_size: Res<TileSize>,
     asset_server: Res<AssetServer>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
@@ -19,7 +18,7 @@ pub fn setup(
         .spawn(UiCameraComponents::default())
         .spawn(Camera2dComponents::default());
 
-    create_labels(&mut commands, &gameplay, &asset_server);
+    create_labels(&mut commands, &asset_server);
 
     let mut wall_positions = Vec::new();
     let mut floor_positions = Vec::new();

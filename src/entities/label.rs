@@ -1,12 +1,7 @@
 use crate::components::*;
-use crate::resources::*;
 use bevy::prelude::*;
 
-pub fn create_labels(
-    commands: &mut Commands,
-    gameplay: &Res<Gameplay>,
-    asset_server: &Res<AssetServer>,
-) {
+pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
     let font_handle = asset_server.load("assets/fonts/FiraSans-Bold.ttf").unwrap();
     let font_size = 20.0;
 
@@ -17,12 +12,12 @@ pub fn create_labels(
                 ..Default::default()
             },
             text: Text {
-                value: gameplay.state.to_string(),
                 font: font_handle,
                 style: TextStyle {
                     font_size,
                     color: Color::BLACK,
                 },
+                ..Default::default()
             },
             ..Default::default()
         })
@@ -40,12 +35,12 @@ pub fn create_labels(
                 ..Default::default()
             },
             text: Text {
-                value: gameplay.moves_count.to_string(),
                 font: font_handle,
                 style: TextStyle {
                     font_size,
                     color: Color::BLACK,
                 },
+                ..Default::default()
             },
             ..Default::default()
         })
@@ -63,12 +58,12 @@ pub fn create_labels(
                 ..Default::default()
             },
             text: Text {
-                value: "FPS: ".to_string(),
                 font: font_handle,
                 style: TextStyle {
                     font_size,
                     color: Color::BLACK,
                 },
+                ..Default::default()
             },
             ..Default::default()
         })
