@@ -3,7 +3,7 @@ use crate::resources::*;
 use bevy::prelude::*;
 use std::collections::HashMap;
 
-pub fn gameplay_state_system(
+pub fn gameplay_state(
     mut gameplay: ResMut<Gameplay>,
     box_spot_query: Query<(&BoxSpot, &Position)>,
     box_query: Query<(&Box, &Position)>,

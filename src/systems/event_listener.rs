@@ -4,7 +4,7 @@ use crate::resources::*;
 use bevy::prelude::*;
 use std::collections::HashMap;
 
-pub fn event_listener_system(
+pub fn event_listener(
     mut state: ResMut<EventListenerState>,
     mut events: ResMut<Events<GameEvent>>,
     asset_server: Res<AssetServer>,

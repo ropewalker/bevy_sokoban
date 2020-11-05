@@ -2,7 +2,7 @@ use crate::components::*;
 use crate::resources::*;
 use bevy::prelude::*;
 
-pub fn translation_system(
+pub fn translation(
     map: Res<Map>,
     tile_size: Res<TileSize>,
     mut transform: Mut<Transform>,

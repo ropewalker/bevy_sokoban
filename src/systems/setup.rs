@@ -4,7 +4,6 @@ use crate::resources::*;
 use bevy::prelude::*;
 use std::collections::HashMap;
 
-#[allow(clippy::too_many_arguments)]
 pub fn setup(
     mut commands: Commands,
     map: Res<Map>,

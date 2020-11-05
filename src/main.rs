@@ -31,11 +31,11 @@ fn main() {
         .add_plugin(FrameTimeDiagnosticsPlugin::default())
         .add_startup_system(setup.system())
         .add_system_to_stage(stage::EVENT, print_keyboard_event.system())
-        .add_system_to_stage(stage::EVENT, input_system.system())
-        .add_system_to_stage(stage::UPDATE, translation_system.system())
-        .add_system_to_stage(stage::UPDATE, animate_sprite_system.system())
-        .add_system_to_stage(stage::UPDATE, label_update_system.system())
-        .add_system_to_stage(stage::UPDATE, event_listener_system.system())
-        .add_system_to_stage(stage::POST_UPDATE, gameplay_state_system.system())
+        .add_system_to_stage(stage::EVENT, input.system())
+        .add_system_to_stage(stage::UPDATE, translation.system())
+        .add_system_to_stage(stage::UPDATE, animate_sprite.system())
+        .add_system_to_stage(stage::UPDATE, label_update.system())
+        .add_system_to_stage(stage::UPDATE, event_listener.system())
+        .add_system_to_stage(stage::POST_UPDATE, gameplay_state.system())
         .run();
 }

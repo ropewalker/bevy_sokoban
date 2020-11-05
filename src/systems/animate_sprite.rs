@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-pub fn animate_sprite_system(
+pub fn animate_sprite(
     texture_atlases: Res<Assets<TextureAtlas>>,
     mut query: Query<(&mut Timer, &mut TextureAtlasSprite, &Handle<TextureAtlas>)>,
 ) {

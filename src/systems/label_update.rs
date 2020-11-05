@@ -5,7 +5,7 @@ use bevy::{
     prelude::*,
 };
 
-pub fn label_update_system(
+pub fn label_update(
     gameplay: Res<Gameplay>,
     diagnostics: Res<Diagnostics>,
     mut text: Mut<Text>,
