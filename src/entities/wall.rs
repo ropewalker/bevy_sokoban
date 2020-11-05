@@ -10,14 +10,14 @@ pub fn create_walls(
     materials: &mut ResMut<Assets<ColorMaterial>>,
     positions: Vec<Position>,
 ) {
-    let material = materials.add(asset_server.load("assets/images/wall.png").unwrap().into());
+    let material = materials.add(asset_server.load("images/wall.png").into());
 
     for position in positions {
         let transform = position_to_translation(map, &tile_size, &position, 10.0);
 
         commands
             .spawn(SpriteComponents {
-                material,
+                material: material.clone(),
                 transform,
                 ..Default::default()
             })

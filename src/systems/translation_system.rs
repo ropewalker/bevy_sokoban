@@ -8,6 +8,5 @@ pub fn translation_system(
     mut transform: Mut<Transform>,
     position: Changed<Position>,
 ) {
-    *transform =
-        position_to_translation(&map, &tile_size, &(*position), transform.translation().z());
+    *transform = position_to_translation(&map, &tile_size, &(*position), transform.translation.z());
 }

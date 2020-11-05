@@ -11,7 +11,7 @@ pub fn input_system(
     mut events: ResMut<Events<GameEvent>>,
     mut player_position_query: Query<(Entity, &Player, &mut Position)>,
     mut movables_query: Query<Without<Player, (Entity, &Movable, &mut Position)>>,
-    mut immovables_query: Query<(Entity, &Immovable, &Position)>,
+    immovables_query: Query<(Entity, &Immovable, &Position)>,
 ) {
     if gameplay.state != GameplayState::Playing {
         return;
@@ -32,14 +32,12 @@ pub fn input_system(
     if let Some(direction) = direction {
         let mut to_move = HashSet::new();
 
-        for (entity, _player, mut position) in &mut player_position_query.iter() {
+        for (entity, _player, mut position) in player_position_query.iter_mut() {
             let mov: HashMap<(usize, usize), u32> = movables_query
-                .iter()
-                .iter()
+                .iter_mut()
                 .map(|t| ((t.2.x, t.2.y), t.0.id()))
                 .collect::<HashMap<_, _>>();
             let immov: HashMap<(usize, usize), u32> = immovables_query
-                .iter()
                 .iter()
                 .map(|t| ((t.2.x, t.2.y), t.0.id()))
                 .collect::<HashMap<_, _>>();
@@ -79,7 +77,7 @@ pub fn input_system(
             }
         }
 
-        for (entity, _movable, mut position) in &mut movables_query.iter() {
+        for (entity, _movable, mut position) in movables_query.iter_mut() {
             if to_move.remove(&entity.id()) {
                 r#move(&entity, &mut position, &direction, &mut events);
             }

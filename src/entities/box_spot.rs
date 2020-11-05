@@ -14,8 +14,7 @@ pub fn create_box_spots(
     for (colour, positions) in positions_by_color {
         let material = materials.add(
             asset_server
-                .load(format!("assets/images/box_spot_{}.png", colour))
-                .unwrap()
+                .load(format!("images/box_spot_{}.png", colour).as_str())
                 .into(),
         );
 
@@ -24,7 +23,7 @@ pub fn create_box_spots(
 
             commands
                 .spawn(SpriteComponents {
-                    material,
+                    material: material.clone(),
                     transform,
                     ..Default::default()
                 })

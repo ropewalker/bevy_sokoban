@@ -2,7 +2,7 @@ use crate::components::*;
 use bevy::prelude::*;
 
 pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
-    let font_handle = asset_server.load("assets/fonts/FiraSans-Bold.ttf").unwrap();
+    let font_handle = asset_server.load("fonts/FiraSans-Bold.ttf");
     let font_size = 20.0;
 
     commands
@@ -12,7 +12,7 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 ..Default::default()
             },
             text: Text {
-                font: font_handle,
+                font: font_handle.clone(),
                 style: TextStyle {
                     font_size,
                     color: Color::BLACK,
@@ -35,7 +35,7 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 ..Default::default()
             },
             text: Text {
-                font: font_handle,
+                font: font_handle.clone(),
                 style: TextStyle {
                     font_size,
                     color: Color::BLACK,

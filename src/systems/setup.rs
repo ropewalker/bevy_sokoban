@@ -11,7 +11,6 @@ pub fn setup(
     tile_size: Res<TileSize>,
     asset_server: Res<AssetServer>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
-    mut textures: ResMut<Assets<Texture>>,
     mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     commands
@@ -96,7 +95,6 @@ pub fn setup(
         &tile_size,
         &asset_server,
         &mut texture_atlases,
-        &mut textures,
         box_positions_by_colour,
     );
     create_box_spots(
@@ -113,7 +111,6 @@ pub fn setup(
         &tile_size,
         &asset_server,
         &mut texture_atlases,
-        &mut textures,
         player_positions,
     );
 }
