@@ -14,7 +14,7 @@ pub fn create_box_spots(
     for (colour, positions) in positions_by_color {
         let material = materials.add(
             asset_server
-                .load(format!("images/box_spot_{}.png", colour).as_str())
+                .get_handle(format!("images/box_spot_{}.png", colour).as_str())
                 .into(),
         );
 

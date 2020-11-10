@@ -24,3 +24,8 @@ impl Default for TileSize {
         TileSize(32.0)
     }
 }
+
+#[derive(Default)]
+pub struct SoundHandles {
+    pub handles: Vec<HandleUntyped>,
+}

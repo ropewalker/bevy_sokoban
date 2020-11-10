@@ -8,6 +8,7 @@ pub fn setup(
     mut commands: Commands,
     map: Res<Map>,
     tile_size: Res<TileSize>,
+    mut sound_handles: ResMut<SoundHandles>,
     asset_server: Res<AssetServer>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
     mut materials: ResMut<Assets<ColorMaterial>>,
@@ -15,6 +16,10 @@ pub fn setup(
     commands
         .spawn(UiCameraComponents::default())
         .spawn(Camera2dComponents::default());
+
+    asset_server.load_folder("images").unwrap();
+    asset_server.load_folder("fonts").unwrap();
+    sound_handles.handles = asset_server.load_folder("sounds").unwrap();
 
     create_labels(&mut commands, &asset_server);
 

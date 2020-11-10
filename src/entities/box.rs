@@ -13,7 +13,7 @@ pub fn create_boxes(
 ) {
     for (colour, positions) in positions_by_color {
         let texture_handle =
-            asset_server.load(format!("images/box_{}_spritesheet.png", colour).as_str());
+            asset_server.get_handle(format!("images/box_{}_spritesheet.png", colour).as_str());
         let texture_atlas =
             TextureAtlas::from_grid(texture_handle, Vec2::new(tile_size.0, tile_size.0), 2, 1);
         let texture_atlas_handle = texture_atlases.add(texture_atlas);

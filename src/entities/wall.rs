@@ -10,7 +10,7 @@ pub fn create_walls(
     materials: &mut ResMut<Assets<ColorMaterial>>,
     positions: Vec<Position>,
 ) {
-    let material = materials.add(asset_server.load("images/wall.png").into());
+    let material = materials.add(asset_server.get_handle("images/wall.png").into());
 
     for position in positions {
         let transform = position_to_translation(map, &tile_size, &position, 10.0);

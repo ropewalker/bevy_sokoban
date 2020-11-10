@@ -2,7 +2,7 @@ use crate::components::*;
 use bevy::prelude::*;
 
 pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
-    let font_handle = asset_server.load("fonts/FiraSans-Bold.ttf");
+    let font_handle = asset_server.get_handle("fonts/FiraSans-Bold.ttf");
     let font_size = 20.0;
 
     commands

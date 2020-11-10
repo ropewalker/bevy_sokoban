@@ -17,7 +17,7 @@ pub fn event_listener(
     for event in state.event_reader.iter(&events) {
         match event {
             GameEvent::PlayerHitObstacle => {
-                let sound = asset_server.load("sounds/wall.mp3");
+                let sound = asset_server.get_handle("sounds/wall.mp3");
                 audio.play(sound);
             }
             GameEvent::EntityMoved(id) => {
@@ -39,7 +39,7 @@ pub fn event_listener(
                 }
             }
             GameEvent::BoxPlacedOnSpot(IsCorrectSpot(is_correct_spot)) => {
-                let sound = asset_server.load(if *is_correct_spot {
+                let sound = asset_server.get_handle(if *is_correct_spot {
                     "sounds/correct.mp3"
                 } else {
                     "sounds/incorrect.mp3"

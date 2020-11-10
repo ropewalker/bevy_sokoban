@@ -23,6 +23,7 @@ fn main() {
         })
         .add_resource(ClearColor(Color::rgba(0.95, 0.95, 0.95, 1.0)))
         .init_resource::<KeyboardState>()
+        .init_resource::<SoundHandles>()
         .init_resource::<EventListenerState>()
         .init_resource::<Map>()
         .init_resource::<TileSize>()
