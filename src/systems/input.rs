@@ -10,7 +10,7 @@ pub fn input(
     mut gameplay: ResMut<Gameplay>,
     mut events: ResMut<Events<GameEvent>>,
     mut player_position_query: Query<(Entity, &Player, &mut Position)>,
-    mut movables_query: Query<Without<Player, (Entity, &Movable, &mut Position)>>,
+    mut movables_query: Query<(Entity, &Movable, &mut Position), Without<Player>>,
     immovables_query: Query<(Entity, &Immovable, &Position)>,
 ) {
     if gameplay.state != GameplayState::Playing {

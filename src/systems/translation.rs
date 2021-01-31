@@ -5,8 +5,10 @@ use bevy::prelude::*;
 pub fn translation(
     map: Res<Map>,
     tile_size: Res<TileSize>,
-    mut transform: Mut<Transform>,
-    position: Changed<Position>,
+    mut query: Query<(&mut Transform, &Position), Changed<Position>>,
 ) {
-    *transform = position_to_translation(&map, &tile_size, &(*position), transform.translation.z());
+    for (mut transform, position) in query.iter_mut() {
+        *transform =
+            position_to_translation(&map, &tile_size, &(*position), transform.translation.z);
+    }
 }

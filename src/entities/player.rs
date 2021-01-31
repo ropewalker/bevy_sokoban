@@ -19,7 +19,7 @@ pub fn create_players(
         let transform = position_to_translation(map, tile_size, &position, 10.0);
 
         commands
-            .spawn(SpriteSheetComponents {
+            .spawn(SpriteSheetBundle {
                 texture_atlas: texture_atlas_handle.clone(),
                 transform,
                 ..Default::default()

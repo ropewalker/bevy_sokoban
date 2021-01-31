@@ -16,7 +16,7 @@ pub fn create_floors(
         let transform = position_to_translation(map, tile_size, &position, 5.0);
 
         commands
-            .spawn(SpriteComponents {
+            .spawn(SpriteBundle {
                 material: material.clone(),
                 transform,
                 ..Default::default()

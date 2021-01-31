@@ -22,7 +22,7 @@ pub fn create_box_spots(
             let transform = position_to_translation(map, tile_size, &position, 9.0);
 
             commands
-                .spawn(SpriteComponents {
+                .spawn(SpriteBundle {
                     material: material.clone(),
                     transform,
                     ..Default::default()

@@ -11,13 +11,14 @@ use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
 use bevy::prelude::*;
 use bevy::render::pass::ClearColor;
 
+#[bevy_main]
 fn main() {
     App::build()
         .add_event::<GameEvent>()
         .add_resource(WindowDescriptor {
             title: "Bevy Sokoban!".to_string(),
-            width: 800,
-            height: 600,
+            width: 800.,
+            height: 600.,
             vsync: true,
             ..Default::default()
         })

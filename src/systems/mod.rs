@@ -8,6 +8,6 @@ mod setup;
 mod translation;
 
 pub use self::{
-    animate_sprite::*, event_listener::*, gameplay_state::*, input::*,
-    label_update::*, print_keyboard_event::*, setup::*, translation::*,
+    animate_sprite::*, event_listener::*, gameplay_state::*, input::*, label_update::*,
+    print_keyboard_event::*, setup::*, translation::*,
 };

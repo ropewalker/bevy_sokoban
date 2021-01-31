@@ -16,7 +16,7 @@ pub fn create_walls(
         let transform = position_to_translation(map, &tile_size, &position, 10.0);
 
         commands
-            .spawn(SpriteComponents {
+            .spawn(SpriteBundle {
                 material: material.clone(),
                 transform,
                 ..Default::default()

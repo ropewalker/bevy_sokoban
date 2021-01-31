@@ -6,7 +6,7 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
     let font_size = 20.0;
 
     commands
-        .spawn(TextComponents {
+        .spawn(TextBundle {
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 ..Default::default()
@@ -16,6 +16,7 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 style: TextStyle {
                     font_size,
                     color: Color::BLACK,
+                    alignment: Default::default(),
                 },
                 ..Default::default()
             },
@@ -24,7 +25,7 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
         .with(Label {
             label_type: LabelType::GameplayState,
         })
-        .spawn(TextComponents {
+        .spawn(TextBundle {
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 position_type: PositionType::Absolute,
@@ -39,6 +40,7 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 style: TextStyle {
                     font_size,
                     color: Color::BLACK,
+                    alignment: Default::default(),
                 },
                 ..Default::default()
             },
@@ -47,7 +49,7 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
         .with(Label {
             label_type: LabelType::MovesCount,
         })
-        .spawn(TextComponents {
+        .spawn(TextBundle {
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 position_type: PositionType::Absolute,
@@ -62,6 +64,7 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 style: TextStyle {
                     font_size,
                     color: Color::BLACK,
+                    alignment: Default::default(),
                 },
                 ..Default::default()
             },
