@@ -1,10 +1,11 @@
-use crate::resources::*;
+use crate::resources::*; // src/resources/*
 use bevy::prelude::{Res, Transform, Vec3};
 use std::fmt;
 use std::fmt::Display;
 
+// Clone, Copy, Eq, PartialEq, Hash, Debug のトレイトを標準実装を利用する
 #[derive(Clone, Copy, Eq, PartialEq, Hash, Debug)]
-pub struct Position {
+pub struct Position{
     pub x: usize,
     pub y: usize,
 }
@@ -17,27 +18,29 @@ pub fn position_to_translation(
 ) -> Transform {
     Transform::from_translation(Vec3::new(
         (position.x as f32 - (map.width - 1) as f32 / 2.0) * tile_size.0,
-        (-(position.y as f32) + (map.height - 1) as f32 / 2.0) * tile_size.0,
+        (-(position.y as f32) - (map.height - 1) as f32 / 2.0) * tile_size.0 + 300.0, // 全体の描画位置をずらすオフセット
         z,
     ))
 }
 
+// 構造体だけ定義してる
 pub struct Wall;
 
 pub struct Player;
 
 #[derive(Clone, Copy, Eq, PartialEq, Hash, Debug)]
-pub enum BoxColour {
+pub enum BoxColor {
     Red,
     Blue,
 }
 
-impl Display for BoxColour {
+// BoxColor構造体のDisplayトレイトの実装
+impl Display for BoxColor {
     fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
         fmt.write_str(match self {
-            BoxColour::Red => "red",
-            BoxColour::Blue => "blue",
-        })?;
+            BoxColor::Red => "red",
+            BoxColor::Blue => "blue",
+        })?; // ? は try!と同じ意味
 
         Ok(())
     }
@@ -45,12 +48,12 @@ impl Display for BoxColour {
 
 #[derive(Debug)]
 pub struct Box {
-    pub colour: BoxColour,
+    pub color: BoxColor,
 }
 
 #[derive(Clone, Copy, Debug)]
 pub struct BoxSpot {
-    pub colour: BoxColour,
+    pub color: BoxColor,
 }
 
 #[derive(Clone, Copy)]

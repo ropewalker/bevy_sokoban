@@ -1,31 +1,41 @@
 use crate::components::*;
 use bevy::prelude::*;
 
-pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
+// ラベルを追加する (テキストは空で生成する)
+pub fn create_labels(
+    commands: &mut Commands,
+    asset_server: &Res<AssetServer>
+){
     let font_handle = asset_server.get_handle("fonts/FiraSans-Bold.ttf");
     let font_size = 20.0;
 
     commands
-        .spawn(TextBundle {
+        .spawn()
+        .insert_bundle(TextBundle {
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 ..Default::default()
             },
             text: Text {
-                font: font_handle.clone(),
-                style: TextStyle {
-                    font_size,
-                    color: Color::BLACK,
-                    alignment: Default::default(),
-                },
+                sections: vec![
+                    TextSection{
+                        value: Default::default(),
+                        style: TextStyle {
+                            font: font_handle.clone(),
+                            font_size,
+                            color: Color::BLACK,
+                        },
+                    },
+                ],
                 ..Default::default()
             },
             ..Default::default()
         })
-        .with(Label {
+        .insert(Label {
             label_type: LabelType::GameplayState,
-        })
-        .spawn(TextBundle {
+        });
+    commands
+        .spawn_bundle(TextBundle{
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 position_type: PositionType::Absolute,
@@ -36,20 +46,26 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 ..Default::default()
             },
             text: Text {
-                font: font_handle.clone(),
-                style: TextStyle {
-                    font_size,
-                    color: Color::BLACK,
-                    alignment: Default::default(),
-                },
+                sections: vec![
+                    TextSection{
+                        value: Default::default(),
+                        style: TextStyle {
+                            font: font_handle.clone(),
+                            font_size,
+                            color: Color::BLACK,
+                        },
+                    },
+                ],
                 ..Default::default()
             },
             ..Default::default()
         })
-        .with(Label {
+        .insert(Label {
             label_type: LabelType::MovesCount,
-        })
-        .spawn(TextBundle {
+        });
+    commands
+        .spawn()
+        .insert_bundle(TextBundle{
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 position_type: PositionType::Absolute,
@@ -60,17 +76,21 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 ..Default::default()
             },
             text: Text {
-                font: font_handle,
-                style: TextStyle {
-                    font_size,
-                    color: Color::BLACK,
-                    alignment: Default::default(),
-                },
+                sections: vec![
+                    TextSection{
+                        value: Default::default(),
+                        style: TextStyle {
+                            font: font_handle.clone(),
+                            font_size,
+                            color: Color::BLACK,
+                        },
+                    },
+                ],
                 ..Default::default()
             },
             ..Default::default()
         })
-        .with(Label {
+        .insert(Label {
             label_type: LabelType::FPS,
         });
 }
