@@ -4,15 +4,21 @@ use crate::resources::*;
 use bevy::prelude::*;
 use std::collections::{HashMap, HashSet};
 
+type WithoutMovableAndPlayer = (Without<Movable>, Without<Player>);
+
 pub fn input(
-    keyboard_input: ChangedRes<Input<KeyCode>>,
+    keyboard_input: Res<Input<KeyCode>>,
     map: Res<Map>,
     mut gameplay: ResMut<Gameplay>,
-    mut events: ResMut<Events<GameEvent>>,
+    mut game_event_writer: EventWriter<GameEvent>,
     mut player_position_query: Query<(Entity, &Player, &mut Position)>,
     mut movables_query: Query<(Entity, &Movable, &mut Position), Without<Player>>,
-    immovables_query: Query<(Entity, &Immovable, &Position)>,
+    immovables_query: Query<(Entity, &Immovable, &Position), WithoutMovableAndPlayer>,
 ) {
+    if !keyboard_input.is_changed() {
+        return;
+    }
+
     if gameplay.state != GameplayState::Playing {
         return;
     }
@@ -63,13 +69,13 @@ pub fn input(
                 };
 
                 if let Some(id) = mov.get(&pos) {
-                    to_move.insert(*id);
+                    to_move.insert(id.to_owned());
                 } else if immov.contains_key(&pos) {
                     to_move.clear();
-                    events.send(GameEvent::PlayerHitObstacle);
+                    game_event_writer.send(GameEvent::PlayerHitObstacle);
                     break;
                 } else {
-                    r#move(&entity, &mut position, &direction, &mut events);
+                    r#move(&entity, &mut position, &direction, &mut game_event_writer);
                     gameplay.moves_count += 1;
 
                     break;
@@ -79,7 +85,7 @@ pub fn input(
 
         for (entity, _movable, mut position) in movables_query.iter_mut() {
             if to_move.remove(&entity.id()) {
-                r#move(&entity, &mut position, &direction, &mut events);
+                r#move(&entity, &mut position, &direction, &mut game_event_writer);
             }
         }
     }
@@ -89,7 +95,7 @@ fn r#move(
     entity: &Entity,
     position: &mut Mut<Position>,
     direction: &MoveDirection,
-    events: &mut ResMut<Events<GameEvent>>,
+    game_event_writer: &mut EventWriter<GameEvent>,
 ) {
     match direction {
         MoveDirection::Up => position.y -= 1,
@@ -98,5 +104,5 @@ fn r#move(
         MoveDirection::Right => position.x += 1,
     }
 
-    events.send(GameEvent::EntityMoved(EntityId(entity.id())));
+    game_event_writer.send(GameEvent::EntityMoved(EntityId(entity.id())));
 }

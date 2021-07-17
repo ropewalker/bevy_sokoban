@@ -22,15 +22,15 @@ pub fn create_boxes(
             let transform = position_to_translation(map, tile_size, &position, 10.0);
 
             commands
-                .spawn(SpriteSheetBundle {
+                .spawn_bundle(SpriteSheetBundle {
                     texture_atlas: texture_atlas_handle.clone(),
                     transform,
                     ..Default::default()
                 })
-                .with(Timer::from_seconds(0.25, true))
-                .with(position)
-                .with(Box { colour })
-                .with(Movable);
+                .insert(Timer::from_seconds(0.25, true))
+                .insert(position)
+                .insert(Box { colour })
+                .insert(Movable);
         }
     }
 }

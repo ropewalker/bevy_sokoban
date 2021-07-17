@@ -12,12 +12,14 @@ pub fn label_update(
 ) {
     for (mut text, label) in query.iter_mut() {
         match label.label_type {
-            LabelType::MovesCount => (*text).value = format!("Moves: {}", gameplay.moves_count),
-            LabelType::GameplayState => (*text).value = format!("{}", gameplay.state),
+            LabelType::MovesCount => {
+                (*text).sections[0].value = format!("Moves: {}", gameplay.moves_count)
+            }
+            LabelType::GameplayState => (*text).sections[0].value = format!("{}", gameplay.state),
             LabelType::Fps => {
                 if let Some(fps) = diagnostics.get(FrameTimeDiagnosticsPlugin::FPS) {
                     if let Some(average) = fps.average() {
-                        (*text).value = format!("FPS: {:.0}", average);
+                        (*text).sections[0].value = format!("FPS: {:.0}", average);
                     }
                 }
             }

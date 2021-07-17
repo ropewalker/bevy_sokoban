@@ -4,9 +4,6 @@ pub enum GameEvent {
 
     // Fired when an entity is moved
     EntityMoved(EntityId),
-
-    // Fired when the box is placed on a spot
-    BoxPlacedOnSpot(IsCorrectSpot),
 }
 
 #[derive(Debug)]

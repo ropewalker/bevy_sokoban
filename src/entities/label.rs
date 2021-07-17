@@ -6,26 +6,28 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
     let font_size = 20.0;
 
     commands
-        .spawn(TextBundle {
+        .spawn_bundle(TextBundle {
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 ..Default::default()
             },
-            text: Text {
-                font: font_handle.clone(),
-                style: TextStyle {
+            text: Text::with_section(
+                "",
+                TextStyle {
+                    font: font_handle.clone(),
                     font_size,
                     color: Color::BLACK,
-                    alignment: Default::default(),
                 },
-                ..Default::default()
-            },
+                Default::default(),
+            ),
             ..Default::default()
         })
-        .with(Label {
+        .insert(Label {
             label_type: LabelType::GameplayState,
-        })
-        .spawn(TextBundle {
+        });
+
+    commands
+        .spawn_bundle(TextBundle {
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 position_type: PositionType::Absolute,
@@ -35,21 +37,23 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 },
                 ..Default::default()
             },
-            text: Text {
-                font: font_handle.clone(),
-                style: TextStyle {
+            text: Text::with_section(
+                "",
+                TextStyle {
+                    font: font_handle.clone(),
                     font_size,
                     color: Color::BLACK,
-                    alignment: Default::default(),
                 },
-                ..Default::default()
-            },
+                Default::default(),
+            ),
             ..Default::default()
         })
-        .with(Label {
+        .insert(Label {
             label_type: LabelType::MovesCount,
-        })
-        .spawn(TextBundle {
+        });
+
+    commands
+        .spawn_bundle(TextBundle {
             style: Style {
                 align_self: AlignSelf::FlexEnd,
                 position_type: PositionType::Absolute,
@@ -59,18 +63,18 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
                 },
                 ..Default::default()
             },
-            text: Text {
-                font: font_handle,
-                style: TextStyle {
+            text: Text::with_section(
+                "",
+                TextStyle {
+                    font: font_handle,
                     font_size,
                     color: Color::BLACK,
-                    alignment: Default::default(),
                 },
-                ..Default::default()
-            },
+                Default::default(),
+            ),
             ..Default::default()
         })
-        .with(Label {
+        .insert(Label {
             label_type: LabelType::Fps,
         });
 }

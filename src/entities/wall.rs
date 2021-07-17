@@ -16,13 +16,13 @@ pub fn create_walls(
         let transform = position_to_translation(map, tile_size, &position, 10.0);
 
         commands
-            .spawn(SpriteBundle {
+            .spawn_bundle(SpriteBundle {
                 material: material.clone(),
                 transform,
                 ..Default::default()
             })
-            .with(position)
-            .with(Wall)
-            .with(Immovable);
+            .insert(position)
+            .insert(Wall)
+            .insert(Immovable);
     }
 }

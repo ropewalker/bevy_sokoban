@@ -5,7 +5,7 @@ use bevy::prelude::*;
 use std::collections::HashMap;
 
 pub fn setup(
-    commands: &mut Commands,
+    mut commands: Commands,
     map: Res<Map>,
     tile_size: Res<TileSize>,
     mut sound_handles: ResMut<SoundHandles>,
@@ -13,15 +13,17 @@ pub fn setup(
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
     mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
-    commands
-        .spawn(CameraUiBundle::default())
-        .spawn(Camera2dBundle::default());
+    let mut camera = OrthographicCameraBundle::new_2d();
+    camera.transform = Transform::from_translation(Vec3::new(0.0, 0.0, 10.0));
+    commands.spawn_bundle(camera);
+
+    commands.spawn_bundle(UiCameraBundle::default());
 
     asset_server.load_folder("images").unwrap();
     asset_server.load_folder("fonts").unwrap();
     sound_handles.handles = asset_server.load_folder("sounds").unwrap();
 
-    create_labels(commands, &asset_server);
+    create_labels(&mut commands, &asset_server);
 
     let mut wall_positions = Vec::new();
     let mut floor_positions = Vec::new();
@@ -78,7 +80,7 @@ pub fn setup(
     }
 
     create_floors(
-        commands,
+        &mut commands,
         &map,
         &tile_size,
         &asset_server,
@@ -86,7 +88,7 @@ pub fn setup(
         floor_positions,
     );
     create_walls(
-        commands,
+        &mut commands,
         &map,
         &tile_size,
         &asset_server,
@@ -94,7 +96,7 @@ pub fn setup(
         wall_positions,
     );
     create_boxes(
-        commands,
+        &mut commands,
         &map,
         &tile_size,
         &asset_server,
@@ -102,7 +104,7 @@ pub fn setup(
         box_positions_by_colour,
     );
     create_box_spots(
-        commands,
+        &mut commands,
         &map,
         &tile_size,
         &asset_server,
@@ -110,7 +112,7 @@ pub fn setup(
         box_spot_positions_by_colour,
     );
     create_players(
-        commands,
+        &mut commands,
         &map,
         &tile_size,
         &asset_server,

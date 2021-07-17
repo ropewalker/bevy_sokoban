@@ -1,8 +1,8 @@
 [package]
 name = "bevy_sokoban"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Dima Lazarev <dmitry.lazarev@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-bevy = "0.4"
+bevy = "0.5"

@@ -22,13 +22,13 @@ pub fn create_box_spots(
             let transform = position_to_translation(map, tile_size, &position, 9.0);
 
             commands
-                .spawn(SpriteBundle {
+                .spawn_bundle(SpriteBundle {
                     material: material.clone(),
                     transform,
                     ..Default::default()
                 })
-                .with(position)
-                .with(BoxSpot { colour });
+                .insert(position)
+                .insert(BoxSpot { colour });
         }
     }
 }
