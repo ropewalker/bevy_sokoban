@@ -31,7 +31,7 @@ pub fn event_listener(
 
                     // Check if there is a spot on this position, and if there
                     // is if it's the correct or incorrect type
-                    if let Some(box_spot) = box_spots_with_positions.get(&box_position) {
+                    if let Some(box_spot) = box_spots_with_positions.get(box_position) {
                         new_events.push(GameEvent::BoxPlacedOnSpot(IsCorrectSpot(
                             box_spot.colour == r#box.colour,
                         )));

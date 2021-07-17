@@ -13,7 +13,7 @@ pub fn create_walls(
     let material = materials.add(asset_server.get_handle("images/wall.png").into());
 
     for position in positions {
-        let transform = position_to_translation(map, &tile_size, &position, 10.0);
+        let transform = position_to_translation(map, tile_size, &position, 10.0);
 
         commands
             .spawn(SpriteBundle {

@@ -38,7 +38,7 @@ impl Default for Map {
                     height,
                 }
             }
-            Err(e) => panic!(e),
+            Err(e) => panic!("{}", e),
         }
     }
 }

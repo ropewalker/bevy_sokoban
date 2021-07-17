@@ -71,6 +71,6 @@ pub fn create_labels(commands: &mut Commands, asset_server: &Res<AssetServer>) {
             ..Default::default()
         })
         .with(Label {
-            label_type: LabelType::FPS,
+            label_type: LabelType::Fps,
         });
 }

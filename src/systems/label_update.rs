@@ -14,7 +14,7 @@ pub fn label_update(
         match label.label_type {
             LabelType::MovesCount => (*text).value = format!("Moves: {}", gameplay.moves_count),
             LabelType::GameplayState => (*text).value = format!("{}", gameplay.state),
-            LabelType::FPS => {
+            LabelType::Fps => {
                 if let Some(fps) = diagnostics.get(FrameTimeDiagnosticsPlugin::FPS) {
                     if let Some(average) = fps.average() {
                         (*text).value = format!("FPS: {:.0}", average);

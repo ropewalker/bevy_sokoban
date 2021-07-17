@@ -68,7 +68,7 @@ pub struct Immovable;
 pub enum LabelType {
     MovesCount,
     GameplayState,
-    FPS,
+    Fps,
 }
 
 pub struct Label {
