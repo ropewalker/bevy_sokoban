@@ -9,11 +9,10 @@ use crate::resources::*;
 use crate::systems::*;
 use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
 use bevy::prelude::*;
-use bevy::render::pass::ClearColor;
 
 #[bevy_main]
 fn main() {
-    App::build()
+    App::new()
         .add_event::<GameEvent>()
         .insert_resource(WindowDescriptor {
             title: "Bevy Sokoban!".to_string(),
