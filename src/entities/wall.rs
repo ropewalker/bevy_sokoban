@@ -7,17 +7,14 @@ pub fn create_walls(
     map: &Res<Map>,
     tile_size: &Res<TileSize>,
     asset_server: &Res<AssetServer>,
-    materials: &mut ResMut<Assets<ColorMaterial>>,
     positions: Vec<Position>,
 ) {
-    let material = materials.add(asset_server.get_handle("images/wall.png").into());
-
     for position in positions {
         let transform = position_to_translation(map, tile_size, &position, 10.0);
 
         commands
             .spawn_bundle(SpriteBundle {
-                material: material.clone(),
+                texture: asset_server.load("images/wall.png"),
                 transform,
                 ..Default::default()
             })

@@ -11,7 +11,6 @@ pub fn setup(
     mut sound_handles: ResMut<SoundHandles>,
     asset_server: Res<AssetServer>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
-    mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     let mut camera = OrthographicCameraBundle::new_2d();
     camera.transform = Transform::from_translation(Vec3::new(0.0, 0.0, 10.0));
@@ -84,7 +83,6 @@ pub fn setup(
         &map,
         &tile_size,
         &asset_server,
-        &mut materials,
         floor_positions,
     );
     create_walls(
@@ -92,7 +90,6 @@ pub fn setup(
         &map,
         &tile_size,
         &asset_server,
-        &mut materials,
         wall_positions,
     );
     create_boxes(
@@ -108,7 +105,6 @@ pub fn setup(
         &map,
         &tile_size,
         &asset_server,
-        &mut materials,
         box_spot_positions_by_colour,
     );
     create_players(
