@@ -11,7 +11,6 @@ pub fn create_box_spots(
     positions_by_color: HashMap<BoxColour, Vec<Position>>,
 ) {
     for (colour, positions) in positions_by_color {
-
         for position in positions {
             let transform = position_to_translation(map, tile_size, &position, 9.0);
 

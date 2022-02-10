@@ -1,5 +1,5 @@
 use crate::resources::*;
-use bevy::prelude::{Res, Transform, Vec3, Component};
+use bevy::prelude::{Component, Res, Transform, Vec3};
 use std::fmt;
 use std::fmt::Display;
 
@@ -50,7 +50,7 @@ pub struct Box {
     pub colour: BoxColour,
 }
 
-#[derive(Component,Clone, Copy, Debug)]
+#[derive(Component, Clone, Copy, Debug)]
 pub struct BoxSpot {
     pub colour: BoxColour,
 }
