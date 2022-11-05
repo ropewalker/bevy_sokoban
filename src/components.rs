@@ -1,6 +1,6 @@
 use crate::resources::*;
 use bevy::ecs::component::Component;
-use bevy::prelude::{Res, Transform, Vec3};
+use bevy::prelude::{Res, Timer, Transform, Vec3};
 use std::fmt;
 use std::fmt::Display;
 
@@ -80,3 +80,6 @@ pub enum LabelType {
 pub struct Label {
     pub label_type: LabelType,
 }
+
+#[derive(Component)]
+pub struct AnimationTimer(pub Timer);

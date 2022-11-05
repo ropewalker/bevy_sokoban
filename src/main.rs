@@ -19,7 +19,6 @@ fn main() {
             title: "Bevy Sokoban!".to_string(),
             width: 800.,
             height: 600.,
-            vsync: true,
             ..Default::default()
         })
         .insert_resource(ClearColor(Color::rgba(0.95, 0.95, 0.95, 1.0)))

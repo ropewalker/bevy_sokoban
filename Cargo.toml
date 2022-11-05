@@ -5,4 +5,4 @@ authors = ["Dima Lazarev <dmitry.lazarev@gmail.com>"]
 edition = "2021"
 
 [dependencies]
-bevy = "0.6.1"
+bevy = "0.7.0"

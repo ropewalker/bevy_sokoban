@@ -27,7 +27,7 @@ pub fn create_boxes(
                     transform,
                     ..Default::default()
                 })
-                .insert(Timer::from_seconds(0.25, true))
+                .insert(AnimationTimer(Timer::from_seconds(0.25, true)))
                 .insert(position)
                 .insert(Box { colour })
                 .insert(Movable);
