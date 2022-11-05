@@ -12,11 +12,10 @@ pub fn setup(
     asset_server: Res<AssetServer>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
 ) {
-    let mut camera = OrthographicCameraBundle::new_2d();
-    camera.transform = Transform::from_translation(Vec3::new(0.0, 0.0, 10.0));
-    commands.spawn_bundle(camera);
-
-    commands.spawn_bundle(UiCameraBundle::default());
+    commands.spawn_bundle(Camera2dBundle {
+        transform: Transform::from_translation(Vec3::new(0.0, 0.0, 10.0)),
+        ..Default::default()
+    });
 
     asset_server.load_folder("images").unwrap();
     asset_server.load_folder("fonts").unwrap();
