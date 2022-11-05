@@ -8,7 +8,6 @@ pub fn translation(
     mut query: Query<(&mut Transform, &Position), Changed<Position>>,
 ) {
     for (mut transform, position) in query.iter_mut() {
-        *transform =
-            position_to_translation(&map, &tile_size, &(*position), transform.translation.z);
+        *transform = position_to_translation(&map, &tile_size, position, transform.translation.z);
     }
 }

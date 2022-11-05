@@ -8,12 +8,12 @@ use crate::events::*;
 use crate::resources::*;
 use crate::systems::*;
 use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
+use bevy::prelude::ClearColor;
 use bevy::prelude::*;
-use bevy::render::pass::ClearColor;
 
 #[bevy_main]
 fn main() {
-    App::build()
+    App::new()
         .add_event::<GameEvent>()
         .insert_resource(WindowDescriptor {
             title: "Bevy Sokoban!".to_string(),
@@ -29,13 +29,13 @@ fn main() {
         .init_resource::<Gameplay>()
         .add_plugins(DefaultPlugins)
         .add_plugin(FrameTimeDiagnosticsPlugin::default())
-        .add_startup_system(setup.system())
-        .add_system_to_stage(CoreStage::PreUpdate, print_keyboard_event.system())
-        .add_system_to_stage(CoreStage::PreUpdate, input.system())
-        .add_system_to_stage(CoreStage::Update, translation.system())
-        .add_system_to_stage(CoreStage::Update, animate_sprite.system())
-        .add_system_to_stage(CoreStage::Update, label_update.system())
-        .add_system_to_stage(CoreStage::Update, event_listener.system())
-        .add_system_to_stage(CoreStage::PostUpdate, gameplay_state.system())
+        .add_startup_system(setup)
+        .add_system_to_stage(CoreStage::PreUpdate, print_keyboard_event)
+        .add_system_to_stage(CoreStage::PreUpdate, input)
+        .add_system_to_stage(CoreStage::Update, translation)
+        .add_system_to_stage(CoreStage::Update, animate_sprite)
+        .add_system_to_stage(CoreStage::Update, label_update)
+        .add_system_to_stage(CoreStage::Update, event_listener)
+        .add_system_to_stage(CoreStage::PostUpdate, gameplay_state)
         .run();
 }

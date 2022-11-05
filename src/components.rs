@@ -1,9 +1,10 @@
 use crate::resources::*;
+use bevy::ecs::component::Component;
 use bevy::prelude::{Res, Transform, Vec3};
 use std::fmt;
 use std::fmt::Display;
 
-#[derive(Clone, Copy, Eq, PartialEq, Hash, Debug)]
+#[derive(Clone, Copy, Eq, PartialEq, Hash, Debug, Component)]
 pub struct Position {
     pub x: usize,
     pub y: usize,
@@ -22,8 +23,10 @@ pub fn position_to_translation(
     ))
 }
 
+#[derive(Component)]
 pub struct Wall;
 
+#[derive(Component)]
 pub struct Player;
 
 #[derive(Clone, Copy, Eq, PartialEq, Hash, Debug)]
@@ -43,12 +46,12 @@ impl Display for BoxColour {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Component)]
 pub struct Box {
     pub colour: BoxColour,
 }
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug, Component)]
 pub struct BoxSpot {
     pub colour: BoxColour,
 }
@@ -61,8 +64,10 @@ pub enum MoveDirection {
     Right,
 }
 
+#[derive(Component)]
 pub struct Movable;
 
+#[derive(Component)]
 pub struct Immovable;
 
 pub enum LabelType {
@@ -71,6 +76,7 @@ pub enum LabelType {
     Fps,
 }
 
+#[derive(Component)]
 pub struct Label {
     pub label_type: LabelType,
 }

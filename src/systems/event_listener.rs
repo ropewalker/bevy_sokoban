@@ -13,11 +13,11 @@ pub fn event_listener(
     for event in game_event_reader.iter() {
         match event {
             GameEvent::PlayerHitObstacle => {
-                let sound = asset_server.get_handle("sounds/wall.mp3");
+                let sound = asset_server.load("sounds/wall.ogg");
                 audio.play(sound);
             }
             GameEvent::EntityMoved(id) => {
-                let entity = Entity::new(id.0);
+                let entity = Entity::from_raw(id.0);
 
                 if let Ok((_, r#box, box_position)) = box_query.get(entity) {
                     let box_spots_with_positions = box_spot_query
@@ -28,10 +28,10 @@ pub fn event_listener(
                     // Check if there is a spot on this position, and if there
                     // is if it's the correct or incorrect type
                     if let Some(box_spot) = box_spots_with_positions.get(box_position) {
-                        let sound = asset_server.get_handle(if box_spot.colour == r#box.colour {
-                            "sounds/correct.mp3"
+                        let sound = asset_server.load(if box_spot.colour == r#box.colour {
+                            "sounds/correct.ogg"
                         } else {
-                            "sounds/incorrect.mp3"
+                            "sounds/incorrect.ogg"
                         });
                         audio.play(sound);
                     }
